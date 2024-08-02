@@ -1,0 +1,21 @@
+**MessageDigest**
+1-1 - Detect all instances of MessageDigest creation and store each instance in D1, D2, ..., Di. Store the total number of detected instances in N.
+1-2 - For each MessageDigest instance:
+1-2-1 - Track how the MessageDigest instance is initialized, e.g., using a specific algorithm (e.g., SHA-1, MD5, SHA-256).
+1-2-2 - Determine if the instance is used in a way that conforms to cryptographic standards and best practices.
+1-3 - For D1, extract details of initialization and usage context.
+1-4 - If initialized with an insecure algorithm (e.g., MD5 or SHA-1), set AD1 to "Insecure Algorithm".
+1-5 - Else, set AD1 to "Secure Algorithm".
+1-6 - If the instance is used for cryptographic purposes (e.g., hashing passwords, verifying data integrity), set CU1 to "Cryptographic Use".
+1-7 - Else, set CU1 to "Non-Cryptographic Use".
+1-8 - If any instance of MessageDigest has "Insecure Algorithm" and "Cryptographic Use", set AT to "Insecure Algorithm for Cryptographic Purposes".
+
+Output:
+
+Combine the calculated values into a structured response like provided in triple quotes. Do all steps. Just include the following format in your response (don't include any additional details or explanation):
+"""
+MessageDigest Usages:
+Number of usages=[N],
+Usages={(D1: {Initialization Details=[initialization_D1], Algorithm Status=[AD1], Usage Context=[CU1]}, (D2: {Initialization Details=[initialization_D2], Algorithm Status=[AD2], Usage Context=[CU2]}, ... (Di: {Initialization Details=[initialization_Di], Algorithm Status=[ADi], Usage Context=[CUi]})},
+Overall Status: [AT]
+"""
