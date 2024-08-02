@@ -1,0 +1,23 @@
+**IvParameterSpec Creation**
+1-1 - Detect all instances of IvParameterSpec creation and store each instance in I1, I2, ..., Ii. Store the total number of detected instances in N.
+1-2 - For each IvParameterSpec instance:
+1-2-1 - Track how the IV is assigned. Detect any conditional branches or assignments that might alter the IV.
+1-2-2 - Determine the final value of the IV after evaluating all conditions.
+1-3 - For I1, extract the final IV value.
+1-4 - Determine if the IV is hardcoded. If hardcoded, set HI1 to "Insecure: Hardcoded IV".
+1-5 - Else, set HI1 to "IV Source OK".
+1-6 - If the IV length is not 16 bytes (128 bits), set VI1 to "Insecure: Incorrect IV length".
+1-7 - Else, set VI1 to "IV length OK".
+1-8 - If N > 0, then repeat the same steps for Ii, setting HIi and VIi accordingly.
+1-9 - If multiple IvParameterSpec instances are detected, determine which one is used in the main function and store its index in UC, if applicable.
+
+Output:
+
+Combine the calculated values into a structured response like provided in triple quotes. Do all steps. Just include the following format in your response (don't include any additional details or explanation):
+
+"""
+IvParameterSpec Usages:
+Number of usages=[N],
+Usages={(I1: {Final IV Value=[iv1], Hardcoded IV Status=[HI1], IV Length Status=[VI1]}, (I2: {Final IV Value=[iv2], Hardcoded IV Status=[HI2], IV Length Status=[VI2]}, ... (Ii: {Final IV Value=[ivi], Hardcoded IV Status=[HIi], IV Length Status=[VIi]})},
+IvParameterSpec used in main= [UC]
+"""
